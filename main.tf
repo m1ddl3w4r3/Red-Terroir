@@ -2,8 +2,8 @@
 
 resource "aws_instance" "http_redirector" {
   count                       = var.http_redirector_instance_count
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.nano"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.http_redirector.id]
   subnet_id                   = aws_subnet.default.id
@@ -68,8 +68,8 @@ resource "aws_instance" "http_redirector" {
 # ---http_c2---
 
 resource "aws_instance" "http_c2" {
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.small"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.http_c2.id]
   subnet_id                   = aws_subnet.default.id
@@ -102,8 +102,8 @@ resource "aws_instance" "http_c2" {
 
 resource "aws_instance" "dns_redirector" {
   count                       = var.dns_redirector_instance_count
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.nano"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.dns_redirector.id]
   subnet_id                   = aws_subnet.default.id
@@ -154,8 +154,8 @@ resource "aws_instance" "dns_redirector" {
 # ---dns_central_redirector---
 
 resource "aws_instance" "dns_central_redirector" {
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.nano"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.dns_central_redirector.id]
   subnet_id                   = aws_subnet.default.id
@@ -208,8 +208,8 @@ resource "aws_instance" "dns_central_redirector" {
 # ---dns_c2---
 
 resource "aws_instance" "dns_c2" {
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.small"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.dns_c2.id]
   subnet_id                   = aws_subnet.default.id
@@ -253,8 +253,8 @@ resource "aws_instance" "dns_c2" {
 # ---phishing_redirector---
 
 resource "aws_instance" "phishing_redirector" {
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.nano"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.phishing_redirector.id]
   subnet_id                   = aws_subnet.default.id
@@ -319,8 +319,8 @@ resource "aws_instance" "phishing_redirector" {
 # ---phishing_host---
 
 resource "aws_instance" "phishing_host" {
-  ami                         = "ami-0b76c3b150c6b1423"
-  instance_type               = "t2.nano"
+  ami                         = "ami-005fc0f236362e99f"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.master.key_name
   vpc_security_group_ids      = [aws_security_group.phishing_host.id]
   subnet_id                   = aws_subnet.default.id
@@ -363,9 +363,9 @@ resource "aws_instance" "phishing_host" {
 # ---mail_server---
 
 resource "digitalocean_droplet" "mail_server" {
-  image    = "ubuntu-18-04-x64"
+  image    = "ubuntu-20-04-x64"
   name     = var.mail_domain
-  region   = "sgp1"
+  region   = "nyc1"
   size     = "s-1vcpu-2gb"
   ssh_keys = [digitalocean_ssh_key.master.id]
 
